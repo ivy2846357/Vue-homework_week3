@@ -117,9 +117,19 @@
                                         </div>
                                         <img class="img-fluid" :src="image">
                                     </div>
-                                    <button class="btn btn-outline-primary btn-sm d-block w-100">
-                                        新增圖片
-                                    </button>
+                                    <div
+                                        v-if="!templateProduct.imagesUrl.length || templateProduct.imagesUrl[templateProduct.imagesUrl.length - 1]">
+                                        <button class="btn btn-outline-primary btn-sm d-block w-100"
+                                            @click="templateProduct.imagesUrl.push('')">
+                                            新增圖片
+                                        </button>
+                                    </div>
+                                    <div v-else>
+                                        <button class="btn btn-outline-danger btn-sm d-block w-100"
+                                            @click="templateProduct.imagesUrl.pop()">
+                                            刪除圖片
+                                        </button>
+                                    </div>
                                 </div>
                                 <!-- 這裡偵測如果 imagesUrl 不是一個陣列的話，就跳出新增圖片 -->
                                 <div v-else>
